@@ -1,4 +1,7 @@
 version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.1.1
+
 jobs:
   build:
     working_directory: ~/repo
@@ -23,3 +26,10 @@ jobs:
           command: npm test
       - store_artifacts:
           path: ~/repo/space
+      - sonarcloud/scan
+
+workflows:
+  main:
+   jobs:
+     - build:
+         context: SonarCloud
