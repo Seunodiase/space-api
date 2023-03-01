@@ -18,7 +18,7 @@ jobs:
           name: install dependencies
           command: npm install
       - run: |
-          apt-get update -y && apt install default-jdk    
+          apt-get update -y && apt install default-jdk -y    
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
