@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: cimg/openjdk:10.16.3-node
+      - image: cimg/node:10.16.3
     steps:
       - checkout
       - run:
@@ -18,7 +18,7 @@ jobs:
           name: install dependencies
           command: npm install
       - run: |
-          apt-get update -y && apt install default-jdk -y    
+          apt-get update -y && apt install default-jdk    
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
